@@ -6,6 +6,5 @@
     ./user.nix
     ./services.nix
     ./bluetooth.nix
-    ./luks.nix
   ];
 }
