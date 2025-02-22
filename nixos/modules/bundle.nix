@@ -1,10 +1,10 @@
 {
   imports = [
-    ./bootloader.nix
-    ./sound.nix
-    ./network.nix
-    ./user.nix
-    ./services.nix
     ./bluetooth.nix
+    ./bootloader.nix
+    ./de.nix
+    ./network.nix
+    ./sound.nix
+    ./user.nix
   ];
 }

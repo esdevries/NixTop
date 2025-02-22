@@ -4,9 +4,13 @@
   };
 
   environment.systemPackages = with pkgs; [
+    
+    # Commands
+    fastfetch
+    git
+    
+    # Programs
     brave
     vscode
-    git
-    fastfetch
   ];
 }

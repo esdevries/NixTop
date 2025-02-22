@@ -1,5 +1,5 @@
 {
-  description = "Ik snap hier niks van";
+  description = "NixTop system configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
