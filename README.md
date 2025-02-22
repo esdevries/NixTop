@@ -6,12 +6,12 @@ This repository contains my personal NixOS system configuration, designed exactl
 This script sets up NixOS using a flake for configuration management. Assuming this is the first time booting NixOS after installation.
 
 ```bash
-export NIX_CONFIG="experimental-features = nix-command flakes"
 nix-shell -p git
-
 git clone https://github.com/esdevries/nixfig.git
-cd nixfig
 
+cd nixfig
 cp /etc/nixos/hardware-configuration.nix ./nixos/
+
+export NIX_CONFIG="experimental-features = nix-command flakes"
 sudo nixos-rebuild switch --flake .
 ```
