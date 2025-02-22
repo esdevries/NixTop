@@ -4,13 +4,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    
     # Commands
     fastfetch
     git
+    htop
     
     # Programs
     brave
+    vlc
     vscode
   ];
 }

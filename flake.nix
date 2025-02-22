@@ -3,26 +3,36 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
 
     let
       system = "x86_64-linux";
-    in {
-
-    nixosConfigurations.nixtop = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        pkgs-stable = import nixpkgs-stable {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        inherit inputs system;
+      pkgsStable = import nixpkgs-stable { config.allowUnfree = true; };
+      commonModules = [ ./nixos/configuration.nix ];
+      
+      mkConfig = name: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { pkgs-stable = pkgsStable; };
+        modules = commonModules ++ [ ./nixos/${name}.nix ];
       };
-      modules = [
-        ./nixos/configuration.nix
-      ];
+      
+    in {
+      nixosConfigurations = rec {
+        desktop = mkConfig "desktop";
+        redmibook = mkConfig "redmibook";
+      };
     };
-  };
+
+    homeConfigurations.esdevries = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = [ ./home-manager/home.nix ];
+    };
 }
