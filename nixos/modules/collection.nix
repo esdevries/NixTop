@@ -5,6 +5,7 @@
     ./de.nix
     ./gc.nix
     ./network.nix
+    ./sddm.nix
     ./sound.nix
     ./user.nix
   ];
