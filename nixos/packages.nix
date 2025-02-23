@@ -7,8 +7,10 @@
     # Commands
     fastfetch
     git
+    home-manager
     htop
-    
+    nixpkgs-fmt
+
     # Programs
     brave
     vlc

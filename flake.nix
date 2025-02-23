@@ -17,22 +17,23 @@
       system = "x86_64-linux";
       pkgsStable = import nixpkgs-stable { config.allowUnfree = true; };
       commonModules = [ ./nixos/configuration.nix ];
-      
+
       mkConfig = name: nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { pkgs-stable = pkgsStable; };
         modules = commonModules ++ [ ./nixos/${name}.nix ];
       };
-      
-    in {
+
+    in
+    {
       nixosConfigurations = rec {
         desktop = mkConfig "desktop";
         redmibook = mkConfig "redmibook";
       };
-    };
 
-    homeConfigurations.esdevries = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
+      homeConfigurations.esdevries = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ ./home-manager/home.nix ];
+      };
     };
 }
