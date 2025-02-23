@@ -13,6 +13,7 @@
 
     # Programs
     brave
+    firefox
     vlc
     vscode
   ];
