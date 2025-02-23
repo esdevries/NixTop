@@ -10,10 +10,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, plasma-manager, ... }@inputs:
 
     let
       system = "x86_64-linux";
@@ -35,7 +41,10 @@
 
       homeConfigurations.esdevries = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ ./home-manager/home.nix ];
+        modules = [ 
+          ./home-manager/home.nix 
+          plasma-manager.homeManagerModules.plasma-manager
+          ];
       };
     };
 }
