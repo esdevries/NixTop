@@ -50,7 +50,7 @@
     shortcuts = lib.mkMerge [
       {
         kwin = {
-          "Kill Window" = "Alt+Q";
+          "Window Close" = "Alt+Q";
 
           "Switch One Desktop to the Right" = "Alt+D";
           "Switch One Desktop to the Left" = "Alt+A";
