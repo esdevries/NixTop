@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./modules/collection.nix
+  ];
+
   home = {
     username = "esdevries";
     homeDirectory = "/home/esdevries";

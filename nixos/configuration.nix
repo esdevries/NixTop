@@ -1,7 +1,7 @@
 { inputs, ... }: {
   imports = [
     ./packages.nix
-    ./modules/bundle.nix
+    ./modules/collection.nix
   ];
 
   time.timeZone = "Europe/Amsterdam";
