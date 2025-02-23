@@ -9,6 +9,7 @@
       wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images_dark/3840x2160.png";
     };
 
+    kscreenlocker.appearance.wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images_dark/3840x2160.png";
     panels = [
       {
         location = "top";
@@ -32,6 +33,15 @@
 
     kwin.nightLight.mode = "location";
     kwin.nightLight.temperature.night = 3200;
+
+    kwin.effects.wobblyWindows.enable = true;
+    kwin.effects.translucency.enable = true;
+    kwin.effects.windowOpenClose.animation = "fade";
+
+    kwin.titlebarButtons.left = [
+      "on-all-desktops"
+      "keep-above-windows"
+    ];
 
     shortcuts = lib.mkMerge [
       {
