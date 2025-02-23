@@ -2,18 +2,17 @@
 {
   boot.loader = {
     systemd-boot.enable = false;
+    efi.canTouchEfiVariables = true;
 
     grub = {
       enable = true;
       efiSupport = true;
       useOSProber = true;
-      efiInstallAsRemovable = true;
       device = "nodev";
       theme = inputs.nixos-grub-themes.packages.${pkgs.system}.hyperfluent;
+      extraConfig = "set timeout=-1";
 
-      extraConfig = ''
-        set timeout=-1
-
+      extraEntries = ''
         menuentry "UEFI Firmware Settings" {
           fwsetup
         }
