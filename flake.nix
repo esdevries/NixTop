@@ -9,6 +9,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
   };
 
   outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
@@ -20,7 +22,7 @@
 
       mkConfig = name: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { pkgs-stable = pkgsStable; };
+        specialArgs = { pkgs-stable = pkgsStable; inherit inputs; };
         modules = commonModules ++ [ ./nixos/${name}.nix ];
       };
 
