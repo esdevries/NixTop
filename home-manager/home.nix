@@ -11,6 +11,7 @@
   };
 
   home.packages = with pkgs; [
+    materia-kde-theme
     papirus-icon-theme
   ];
 }
