@@ -11,6 +11,7 @@
       windowDecorations.library = "org.kde.kwin.aurorae";
       windowDecorations.theme = "__aurorae__svg__Materia-Dark";
       wallpaper = builtins.toString ../../media/wallpaper.jpg;
+      splashScreen.theme = "SimpleTuxSplash-Plasma6";
     };
 
     kscreenlocker.appearance.wallpaper = builtins.toString ../../media/wallpaper.jpg;
@@ -44,8 +45,8 @@
       }
       {
         screen = 1;
-        location = "bottom";
-        height = 82;
+        location = "top";
+        height = 64;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
