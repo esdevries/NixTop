@@ -16,8 +16,22 @@
     kscreenlocker.appearance.wallpaper = builtins.toString ../media/wallpaper.jpg;
     panels = [
       {
+        screen = 0;
         location = "top";
-        height = 44;
+        height = 48;
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.pager"
+          "org.kde.plasma.taskmanager"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+        ];
+      }
+
+      {
+        screen = 1;
+        location = "bottom";
+        height = 82;
         widgets = [
           "org.kde.plasma.kickoff"
           "org.kde.plasma.pager"
