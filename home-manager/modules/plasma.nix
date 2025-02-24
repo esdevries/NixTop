@@ -10,10 +10,10 @@
       theme = "Materia";
       windowDecorations.library = "org.kde.kwin.aurorae";
       windowDecorations.theme = "__aurorae__svg__Materia-Dark";
-      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images_dark/3840x2160.png";
+      wallpaper = builtins.toString ../media/wallpaper.jpg;
     };
 
-    kscreenlocker.appearance.wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images_dark/3840x2160.png";
+    kscreenlocker.appearance.wallpaper = builtins.toString ../media/wallpaper.jpg;
     panels = [
       {
         location = "top";
