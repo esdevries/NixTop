@@ -1,5 +1,6 @@
 {
   imports = [
+    ./avatar.nix
     ./bluetooth.nix
     ./bootloader.nix
     ./de.nix

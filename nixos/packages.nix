@@ -10,7 +10,7 @@
     home-manager
     htop
     nixpkgs-fmt
-
+    
     # Programs
     brave
     firefox
