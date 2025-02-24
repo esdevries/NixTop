@@ -26,8 +26,22 @@
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
-      }
+        extraSettings = ''
+            panel.widgetIds.forEach((appletWidget) => {
+              appletWidget = panel.widgetById(appletWidget);
 
+              if (appletWidget.type === "org.kde.plasma.kickoff") {
+                  appletWidget.currentConfigGroup = ["General"];
+                  appletWidget.writeConfig("icon", "tux");
+              }
+
+              if (appletWidget.type === "org.kde.plasma.taskmanager") {
+                  appletWidget.currentConfigGroup = ["General"];
+                  appletWidget.writeConfig("launchers", "");
+              }
+          });
+        '';
+      }
       {
         screen = 1;
         location = "bottom";
@@ -39,6 +53,21 @@
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
+        extraSettings = ''
+            panel.widgetIds.forEach((appletWidget) => {
+              appletWidget = panel.widgetById(appletWidget);
+
+              if (appletWidget.type === "org.kde.plasma.kickoff") {
+                  appletWidget.currentConfigGroup = ["General"];
+                  appletWidget.writeConfig("icon", "tux");
+              }
+
+              if (appletWidget.type === "org.kde.plasma.taskmanager") {
+                  appletWidget.currentConfigGroup = ["General"];
+                  appletWidget.writeConfig("launchers", "");
+              }
+          });
+        '';
       }
     ];
 
