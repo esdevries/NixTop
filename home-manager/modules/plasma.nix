@@ -26,6 +26,9 @@
           "org.kde.plasma.systemtray"
           "org.kde.plasma.digitalclock"
         ];
+        extraSettings = ''
+          console.log('hellowrodl');
+        '';
       }
 
       {
