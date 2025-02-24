@@ -10,10 +10,10 @@
       theme = "Materia";
       windowDecorations.library = "org.kde.kwin.aurorae";
       windowDecorations.theme = "__aurorae__svg__Materia-Dark";
-      wallpaper = builtins.toString ../media/wallpaper.jpg;
+      wallpaper = builtins.toString ../../media/wallpaper.jpg;
     };
 
-    kscreenlocker.appearance.wallpaper = builtins.toString ../media/wallpaper.jpg;
+    kscreenlocker.appearance.wallpaper = builtins.toString ../../media/wallpaper.jpg;
     panels = [
       {
         screen = 0;
