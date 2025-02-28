@@ -6,7 +6,7 @@
     font = {
       name = "Hack";
       package = pkgs.nerd-fonts.hack;
-      size = 12;
+      size = 14;
     };
     settings = {
       confirm_os_window_close = 0;
