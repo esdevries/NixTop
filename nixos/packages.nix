@@ -16,5 +16,10 @@
     firefox
     vlc
     vscode
+
+    # Misc
+    kdePackages.qtmultimedia
+    kdePackages.sddm-kcm
+    sddm-astronaut
   ];
 }
