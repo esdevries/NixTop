@@ -93,6 +93,11 @@
 
     shortcuts = lib.mkMerge [
       {
+        "kitty.desktop" = {
+          "_launch" = "Alt+Return";
+        };
+      }
+      {
         kwin = {
           "Window Close" = "Alt+Q";
 

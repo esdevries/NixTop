@@ -12,6 +12,7 @@
   };
 
   home.packages = with pkgs; [
+    kdePackages.kcalc
     materia-kde-theme
     papirus-icon-theme
   ];
