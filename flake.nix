@@ -29,7 +29,7 @@
 
       mkConfig = name: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { pkgs-stable = pkgsStable; inherit inputs; };
+        specialArgs = { pkgs-stable = pkgsStable; inherit inputs; profile = profile; };
         modules = commonModules ++ [ ./nixos/${name}.nix ];
       };
 

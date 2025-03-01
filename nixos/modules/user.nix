@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, profile, ... }: {
   users = {
-    users.esdevries = {
+    users.${profile.username} = {
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;
       isNormalUser = true;
