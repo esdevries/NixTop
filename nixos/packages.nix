@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     # Commands
+    docker
     fastfetch
     git
     home-manager

@@ -5,7 +5,7 @@
       ignoreShellProgramCheck = true;
       isNormalUser = true;
       description = "Erwin de Vries";
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
       packages = with pkgs; [ ];
     };
   };
