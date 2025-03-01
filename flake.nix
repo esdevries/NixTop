@@ -25,6 +25,7 @@
       system = "x86_64-linux";
       pkgsStable = import nixpkgs-stable { config.allowUnfree = true; };
       commonModules = [ ./nixos/configuration.nix ];
+      profile = import ./profile.nix;
 
       mkConfig = name: nixpkgs.lib.nixosSystem {
         inherit system;
@@ -39,12 +40,13 @@
         redmibook = mkConfig "redmibook";
       };
 
-      homeConfigurations.esdevries = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${profile.username} = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${system};
         modules = [
           ./home-manager/home.nix
           plasma-manager.homeManagerModules.plasma-manager
         ];
+        extraSpecialArgs = { profile = profile; };
       };
     };
 }

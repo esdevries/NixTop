@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, profile, ... }:
 {
   programs.plasma = {
     enable = true;
@@ -10,11 +10,11 @@
       theme = "Materia";
       windowDecorations.library = "org.kde.kwin.aurorae";
       windowDecorations.theme = "__aurorae__svg__Materia-Dark";
-      wallpaper = builtins.toString ../media/wallpaper.jpg;
+      wallpaper = "/home/${profile.username}/.wallpaper";
       splashScreen.theme = "SimpleTuxSplash-Plasma6";
     };
 
-    kscreenlocker.appearance.wallpaper = builtins.toString ../media/wallpaper.jpg;
+    kscreenlocker.appearance.wallpaper = "/home/${profile.username}/.wallpaper";
     panels = [
       {
         screen = 0;
