@@ -11,6 +11,7 @@
     home-manager
     htop
     nixpkgs-fmt
+    wget
     
     # Programs
     brave

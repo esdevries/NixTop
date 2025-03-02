@@ -13,7 +13,7 @@
   };
 
   home.packages = with pkgs; [
-    kdePackages.kcalc
+    gnome-calculator
     materia-kde-theme
     papirus-icon-theme
   ];
