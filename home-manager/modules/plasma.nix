@@ -1,4 +1,37 @@
 { pkgs, lib, profile, ... }:
+let
+  commonWidgets = [
+    "org.kde.plasma.kickoff"
+    "org.kde.plasma.pager"
+    "org.kde.plasma.taskmanager"
+    "org.kde.plasma.systemtray"
+    "org.kde.plasma.digitalclock"
+  ];
+
+  panelSettings = ''
+    panel.widgetIds.forEach((appletWidget) => {
+      appletWidget = panel.widgetById(appletWidget);
+      if (appletWidget.type === "org.kde.plasma.kickoff") {
+        appletWidget.currentConfigGroup = ["General"];
+        appletWidget.writeConfig("icon", "tux");
+      }
+      if (appletWidget.type === "org.kde.plasma.taskmanager") {
+        appletWidget.currentConfigGroup = ["General"];
+        appletWidget.writeConfig("launchers", "");
+      }
+    });
+  '';
+
+  commonPowerSettings = {
+    autoSuspend.action = "nothing";
+    dimDisplay.enable = false;
+    powerButtonAction = "sleep";
+    powerProfile = "balanced";
+    turnOffDisplay.idleTimeout = "never";
+    whenSleepingEnter = "standbyThenHibernate";
+    whenLaptopLidClosed = "sleep";
+  };
+in
 {
   programs.plasma = {
     enable = true;
@@ -14,122 +47,57 @@
       splashScreen.theme = "SimpleTuxSplash-Plasma6";
     };
 
-    kscreenlocker.appearance.wallpaper = "/home/${profile.username}/.wallpaper";
+    kscreenlocker = {
+      appearance.wallpaper = "/home/${profile.username}/.wallpaper";
+      lockOnResume = true;
+      autoLock = false;
+      passwordRequired = true;
+    };
+
     panels = [
-      {
-        screen = 0;
-        location = "top";
-        height = 48;
-        widgets = [
-          "org.kde.plasma.kickoff"
-          "org.kde.plasma.pager"
-          "org.kde.plasma.taskmanager"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
-        ];
-        extraSettings = ''
-            panel.widgetIds.forEach((appletWidget) => {
-              appletWidget = panel.widgetById(appletWidget);
-
-              if (appletWidget.type === "org.kde.plasma.kickoff") {
-                  appletWidget.currentConfigGroup = ["General"];
-                  appletWidget.writeConfig("icon", "tux");
-              }
-
-              if (appletWidget.type === "org.kde.plasma.taskmanager") {
-                  appletWidget.currentConfigGroup = ["General"];
-                  appletWidget.writeConfig("launchers", "");
-              }
-          });
-        '';
-      }
-      {
-        screen = 1;
-        location = "top";
-        height = 64;
-        widgets = [
-          "org.kde.plasma.kickoff"
-          "org.kde.plasma.pager"
-          "org.kde.plasma.taskmanager"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
-        ];
-        extraSettings = ''
-            panel.widgetIds.forEach((appletWidget) => {
-              appletWidget = panel.widgetById(appletWidget);
-
-              if (appletWidget.type === "org.kde.plasma.kickoff") {
-                  appletWidget.currentConfigGroup = ["General"];
-                  appletWidget.writeConfig("icon", "tux");
-              }
-
-              if (appletWidget.type === "org.kde.plasma.taskmanager") {
-                  appletWidget.currentConfigGroup = ["General"];
-                  appletWidget.writeConfig("launchers", "");
-              }
-          });
-        '';
-      }
+      { screen = 0; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
+      { screen = 1; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
+      { screen = 2; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
     ];
 
-    powerdevil.AC.autoSuspend.action = "nothing";
-    powerdevil.AC.dimDisplay.enable = false;
-    powerdevil.AC.powerButtonAction = "sleep";
-    powerdevil.AC.powerProfile = "balanced";
-    powerdevil.AC.turnOffDisplay.idleTimeout = "never";
-    powerdevil.AC.whenSleepingEnter = "standbyThenHibernate";
-    powerdevil.AC.whenLaptopLidClosed = "sleep";
+    powerdevil = {
+      AC = lib.mkForce commonPowerSettings;
+      battery = lib.mkForce commonPowerSettings;
+      lowBattery = lib.mkForce commonPowerSettings;
+    };
 
-    powerdevil.battery.autoSuspend.action = "nothing";
-    powerdevil.battery.dimDisplay.enable = false;
-    powerdevil.battery.powerButtonAction = "sleep";
-    powerdevil.battery.powerProfile = "balanced";
-    powerdevil.battery.turnOffDisplay.idleTimeout = "never";
-    powerdevil.battery.whenSleepingEnter = "standbyThenHibernate";
-    powerdevil.battery.whenLaptopLidClosed = "sleep";
-
-    powerdevil.lowBattery.autoSuspend.action = "nothing";
-    powerdevil.lowBattery.dimDisplay.enable = false;
-    powerdevil.lowBattery.powerButtonAction = "sleep";
-    powerdevil.lowBattery.powerProfile = "balanced";
-    powerdevil.lowBattery.turnOffDisplay.idleTimeout = "never";
-    powerdevil.lowBattery.whenSleepingEnter = "standbyThenHibernate";
-    powerdevil.lowBattery.whenLaptopLidClosed = "sleep";
-
-    kwin.nightLight.enable = true;
-    kwin.nightLight.location.latitude = "52.353511";
-    kwin.nightLight.location.longitude = "6.658120";
-
-    kwin.virtualDesktops.number = 9;
-    kwin.virtualDesktops.rows = 3;
-
-    kwin.nightLight.mode = "location";
-    kwin.nightLight.temperature.night = 3200;
-
-    kwin.effects.wobblyWindows.enable = true;
-    kwin.effects.translucency.enable = true;
-    kwin.effects.windowOpenClose.animation = "fade";
-
-    kwin.titlebarButtons.left = [
-      "on-all-desktops"
-      "keep-above-windows"
-    ];
+    kwin = {
+      nightLight = {
+        enable = true;
+        location.latitude = "52.353511";
+        location.longitude = "6.658120";
+        mode = "location";
+        temperature.night = 3200;
+      };
+      virtualDesktops = {
+        number = 9;
+        rows = 3;
+      };
+      effects = {
+        wobblyWindows.enable = true;
+        translucency.enable = true;
+        windowOpenClose.animation = "fade";
+      };
+      titlebarButtons.left = [
+        "on-all-desktops"
+        "keep-above-windows"
+      ];
+    };
 
     shortcuts = lib.mkMerge [
-      {
-        "kitty.desktop" = {
-          "_launch" = "Alt+Return";
-        };
-      }
+      { "kitty.desktop" = { "_launch" = "Alt+Return"; }; }
       {
         kwin = {
           "Window Close" = "Alt+Q";
-
           "Switch One Desktop to the Right" = "Alt+D";
           "Switch One Desktop to the Left" = "Alt+A";
           "Switch One Desktop Up" = "Alt+W";
           "Switch One Desktop Down" = "Alt+S";
-
           "Window One Desktop to the Right" = "Alt+Shift+D";
           "Window One Desktop to the Left" = "Alt+Shift+A";
           "Window One Desktop Up" = "Alt+Shift+W";
