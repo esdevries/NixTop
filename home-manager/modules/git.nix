@@ -1,8 +1,9 @@
+{ profile, ... }:
 {
   programs.git = {
     enable = true;
-    userName = "Erwin de Vries";
-    userEmail = "esdevries313@gmail.com";
+    userName = profile.fullname;
+    userEmail = profile.gitemail;
     lfs.enable = true;
   };
 }

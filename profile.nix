@@ -1,4 +1,5 @@
 {
   username = "esdevries";
-  description = "Erwin de Vries";
+  fullname = "Erwin de Vries";
+  gitemail = "esdevries313@gmail.com";
 }

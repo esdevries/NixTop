@@ -1,5 +1,5 @@
 { lib, ... }: {
-  networking.hostName = "nixos";
+  networking.hostName = "nixtop";
   networking.networkmanager.enable = true;
   networking.useDHCP = lib.mkDefault true;
 
