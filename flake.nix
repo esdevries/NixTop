@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -19,11 +18,11 @@
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, plasma-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
 
     let
       system = "x86_64-linux";
-      pkgsStable = import nixpkgs-stable { config.allowUnfree = true; };
+      pkgsStable = import nixpkgs { config.allowUnfree = true; };
       commonModules = [ ./nixos/configuration.nix ];
       profile = import ./profile.nix;
 
