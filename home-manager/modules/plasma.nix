@@ -72,6 +72,30 @@
       }
     ];
 
+    powerdevil.AC.autoSuspend.action = "nothing";
+    powerdevil.AC.dimDisplay.enable = false;
+    powerdevil.AC.powerButtonAction = "sleep";
+    powerdevil.AC.powerProfile = "balanced";
+    powerdevil.AC.turnOffDisplay.idleTimeout = "never";
+    powerdevil.AC.whenSleepingEnter = "standbyThenHibernate";
+    powerdevil.AC.whenLaptopLidClosed = "sleep";
+
+    powerdevil.battery.autoSuspend.action = "nothing";
+    powerdevil.battery.dimDisplay.enable = false;
+    powerdevil.battery.powerButtonAction = "sleep";
+    powerdevil.battery.powerProfile = "balanced";
+    powerdevil.battery.turnOffDisplay.idleTimeout = "never";
+    powerdevil.battery.whenSleepingEnter = "standbyThenHibernate";
+    powerdevil.battery.whenLaptopLidClosed = "sleep";
+
+    powerdevil.lowBattery.autoSuspend.action = "nothing";
+    powerdevil.lowBattery.dimDisplay.enable = false;
+    powerdevil.lowBattery.powerButtonAction = "sleep";
+    powerdevil.lowBattery.powerProfile = "balanced";
+    powerdevil.lowBattery.turnOffDisplay.idleTimeout = "never";
+    powerdevil.lowBattery.whenSleepingEnter = "standbyThenHibernate";
+    powerdevil.lowBattery.whenLaptopLidClosed = "sleep";
+
     kwin.nightLight.enable = true;
     kwin.nightLight.location.latitude = "52.353511";
     kwin.nightLight.location.longitude = "6.658120";
