@@ -10,7 +10,6 @@
     git
     home-manager
     htop
-    nixpkgs-fmt
     wget
     
     # Programs
