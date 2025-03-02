@@ -1,23 +1,43 @@
-# NixOS system configuration
-This repository contains my personal NixOS system configuration, designed exactly as I see fit.
+<div align="center">
+
+# NixTop System Configuration  
+
+### This repository contains my personal NixOS system configuration, designed exactly as I see fit.
+
+</div>
+
+![](./home-manager/media/example.png)
+
+---
 
 ## Usage
 
-Assuming this is the first time booting NixOS after installation. 
+### Getting NixTop
 
-### Install
+Install NixOS like you normally would, and clone the repo.
 ```bash
+# Assuming this is the first time booting NixOS after installation and you don't have git. 
 nix-shell -p git
 git clone https://github.com/esdevries/NixTop.git && cd NixTop
-
-sudo nixos-rebuild switch --flake .#(redmibook|desktop)
-home-manager switch --flake .
 ```
-If you want to try this yourself, the easiest thing to do is BEFORE running nixos-rebuild switch do the following,
+### Edit personal details
+Next, make sure to update the `profile.nix` file with your own personal details.
+
+```nix
+# Example of what might be in profile.nix
+{
+  username = "YOUR_USERNAME";
+  fullname = "YOUR_FULL_NAME";
+  gitemail = "YOUR_GIT_EMAIL";
+}
+```
+
+### Copy hardware configuration.nix
 ```bash
 cp /etc/nixos/hardware-configuration.nix ./nixos/desktop.nix
 ```
-And then,
+
+### Install
 ```bash
-sudo nixos-rebuild switch --flake .#desktop
+./build.sh
 ```
