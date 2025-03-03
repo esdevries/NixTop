@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.nvf = {
     enable = true;
     settings = {
@@ -35,15 +35,33 @@
           enableFormat = true;
           enableLSP = true;
           enableTreesitter = true;
+          enableExtraDiagnostics = true;
 
           bash.enable = true;
           clang.enable = true;
+          go.enable = true;
+          python.enable = true;
 
           markdown.enable = true;
           markdown.extensions.render-markdown-nvim.enable = true;
 
           nix.enable = true;
         };
+
+        visuals = {
+          nvim-scrollbar.enable = true;
+          nvim-web-devicons.enable = true;
+          nvim-cursorline.enable = true;
+          cinnamon-nvim.enable = true;
+          fidget-nvim.enable = true;
+
+          highlight-undo.enable = true;
+          indent-blankline.enable = true;
+
+          # Fun
+          cellular-automaton.enable = false;
+        };
+
         utility.preview.markdownPreview.enable = true;
       };
     };
