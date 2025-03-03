@@ -1,5 +1,8 @@
-{ pkgs, lib, profile, ... }:
-let
+{
+  lib,
+  profile,
+  ...
+}: let
   commonWidgets = [
     "org.kde.plasma.kickoff"
     "org.kde.plasma.pager"
@@ -31,8 +34,7 @@ let
     whenSleepingEnter = "standbyThenHibernate";
     whenLaptopLidClosed = "sleep";
   };
-in
-{
+in {
   programs.plasma = {
     enable = true;
 
@@ -55,9 +57,27 @@ in
     };
 
     panels = [
-      { screen = 0; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
-      { screen = 1; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
-      { screen = 2; location = "top"; height = 48; widgets = commonWidgets; extraSettings = panelSettings; }
+      {
+        screen = 0;
+        location = "top";
+        height = 48;
+        widgets = commonWidgets;
+        extraSettings = panelSettings;
+      }
+      {
+        screen = 1;
+        location = "top";
+        height = 48;
+        widgets = commonWidgets;
+        extraSettings = panelSettings;
+      }
+      {
+        screen = 2;
+        location = "top";
+        height = 48;
+        widgets = commonWidgets;
+        extraSettings = panelSettings;
+      }
     ];
 
     powerdevil = {
@@ -90,7 +110,9 @@ in
     };
 
     shortcuts = lib.mkMerge [
-      { "kitty.desktop" = { "_launch" = "Alt+Return"; }; }
+      {"kitty.desktop" = {"_launch" = "Alt+Return";};}
+      {"org.kde.dolphin.desktop" = {"_launch" = "Alt+E";};}
+      {"brave-browser.desktop" = {"_launch" = "Alt+R";};}
       {
         kwin = {
           "Window Close" = "Alt+Q";
@@ -102,6 +124,8 @@ in
           "Window One Desktop to the Left" = "Alt+Shift+A";
           "Window One Desktop Up" = "Alt+Shift+W";
           "Window One Desktop Down" = "Alt+Shift+S";
+          "Window Custom Quick Tile Right" = "Alt+Right";
+          "Window Custom Quick Tile Left" = "Alt+Left";
         };
       }
     ];

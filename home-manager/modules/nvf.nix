@@ -5,8 +5,28 @@
       vim = {
         viAlias = true;
         vimAlias = true;
-        utility.icon-picker.enable = true;
         mini.icons.enable = true;
+        useSystemClipboard = true;
+
+        utility = {
+          ccc.enable = false;
+          vim-wakatime.enable = false;
+          diffview-nvim.enable = true;
+          yanky-nvim.enable = false;
+          icon-picker.enable = true;
+          surround.enable = true;
+          leetcode-nvim.enable = true;
+          multicursors.enable = true;
+
+          motion = {
+            hop.enable = true;
+            leap.enable = true;
+            precognition.enable = true;
+          };
+          images = {
+            image-nvim.enable = false;
+          };
+        };
 
         theme = {
           enable = true;
@@ -58,11 +78,67 @@
           highlight-undo.enable = true;
           indent-blankline.enable = true;
 
-          # Fun
           cellular-automaton.enable = false;
         };
 
         utility.preview.markdownPreview.enable = true;
+        autopairs.nvim-autopairs.enable = true;
+
+        autocomplete.nvim-cmp.enable = true;
+        snippets.luasnip.enable = true;
+
+        statusline = {
+          lualine = {
+            enable = true;
+            theme = "dracula";
+          };
+        };
+
+        syntaxHighlighting = true;
+
+        tabline = {
+          nvimBufferline.enable = true;
+        };
+
+        treesitter.context.enable = true;
+
+        binds = {
+          whichKey.enable = true;
+          cheatsheet.enable = true;
+        };
+
+        telescope.enable = true;
+
+        git = {
+          enable = true;
+          gitsigns.enable = true;
+          gitsigns.codeActions.enable = false;
+        };
+
+        minimap = {
+          minimap-vim.enable = false;
+          codewindow.enable = true;
+        };
+
+        comments = {
+          comment-nvim.enable = true;
+        };
+
+        ui = {
+          borders.enable = true;
+          noice.enable = true;
+          colorizer.enable = true;
+          modes-nvim.enable = false;
+          illuminate.enable = true;
+          breadcrumbs = {
+            enable = true;
+            navbuddy.enable = true;
+          };
+          smartcolumn = {
+            enable = true;
+          };
+          fastaction.enable = true;
+        };
       };
     };
   };

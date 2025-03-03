@@ -24,7 +24,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     home-manager,
     plasma-manager,
@@ -42,7 +41,7 @@
         specialArgs = {
           pkgs-stable = pkgsStable;
           inherit inputs;
-          profile = profile;
+          inherit profile;
         };
         modules = commonModules ++ [./nixos/${name}.nix];
       };
@@ -59,7 +58,7 @@
         plasma-manager.homeManagerModules.plasma-manager
         nvf.homeManagerModules.default
       ];
-      extraSpecialArgs = {profile = profile;};
+      extraSpecialArgs = {inherit profile;};
     };
   };
 }

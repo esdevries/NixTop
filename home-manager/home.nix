@@ -1,5 +1,8 @@
-{ pkgs, profile, ... }:
 {
+  pkgs,
+  profile,
+  ...
+}: {
   imports = [
     ./modules/collection.nix
   ];
@@ -13,8 +16,10 @@
   };
 
   home.packages = with pkgs; [
+    fzf
     gnome-calculator
     materia-kde-theme
     papirus-icon-theme
+    wl-clipboard
   ];
 }
