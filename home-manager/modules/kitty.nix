@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
     themeFile = "GitHub_Dark_Colorblind";
