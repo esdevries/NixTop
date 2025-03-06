@@ -30,9 +30,9 @@
 
         theme = {
           enable = true;
-          name = "tokyonight";
+          name = "github";
           transparent = true;
-          style = "night";
+          style = "dark_colorblind";
         };
 
         spellcheck = {
@@ -90,7 +90,7 @@
         statusline = {
           lualine = {
             enable = true;
-            theme = "dracula";
+            theme = "github_dark_colorblind";
           };
         };
 
