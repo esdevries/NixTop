@@ -20,6 +20,7 @@
     gnome-calculator
     materia-kde-theme
     papirus-icon-theme
+    (callPackage ./splashscreen.nix {})
     wl-clipboard
   ];
 }
