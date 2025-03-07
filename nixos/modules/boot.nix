@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   boot.loader = {
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
@@ -27,4 +30,6 @@
       '';
     };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_6_13;
 }

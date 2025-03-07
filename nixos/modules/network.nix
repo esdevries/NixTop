@@ -2,11 +2,11 @@
   networking = {
     hostName = "nixtop";
     useDHCP = lib.mkDefault true;
-    wireless.iwd.enable = true;
+    wireless.iwd.enable = lib.mkForce true;
 
     networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
+      enable = lib.mkDefault true;
+      wifi.backend = lib.mkForce "iwd";
     };
   };
 

@@ -1,7 +1,7 @@
 {
   imports = [
     ./bluetooth.nix
-    ./bootloader.nix
+    ./boot.nix
     ./de.nix
     ./docker.nix
     ./updategc.nix
