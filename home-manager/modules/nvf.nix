@@ -7,6 +7,7 @@
         vimAlias = true;
         mini.icons.enable = true;
         useSystemClipboard = true;
+        options.shiftwidth = 2;
 
         utility = {
           ccc.enable = false;
