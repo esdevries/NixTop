@@ -1,7 +1,14 @@
-{ lib, ... }: {
-  networking.hostName = "nixtop";
-  networking.networkmanager.enable = true;
-  networking.useDHCP = lib.mkDefault true;
+{lib, ...}: {
+  networking = {
+    hostName = "nixtop";
+    useDHCP = lib.mkDefault true;
+    wireless.iwd.enable = true;
+
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+  };
 
   services.openssh.enable = true;
 }
