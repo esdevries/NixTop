@@ -16,6 +16,7 @@
   };
 
   home.packages = with pkgs; [
+    bat
     fzf
     gnome-calculator
     materia-kde-theme
