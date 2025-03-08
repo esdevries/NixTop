@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -10,8 +10,9 @@
     git
     home-manager
     htop
+    python3Full
     wget
-    
+
     # Programs
     brave
     firefox
