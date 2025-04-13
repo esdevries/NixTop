@@ -37,14 +37,15 @@
 in {
   programs.plasma = {
     enable = true;
+    overrideConfig = true;
 
     workspace = {
       clickItemTo = "select";
       iconTheme = "Papirus-Dark";
       colorScheme = "MateriaDark";
       theme = "Materia";
-      windowDecorations.library = "org.kde.kwin.aurorae";
-      windowDecorations.theme = "__aurorae__svg__Materia-Dark";
+      windowDecorations.library = "org.kde.breeze";
+      windowDecorations.theme = "Breeze";
       wallpaper = "/home/${profile.username}/.wallpaper";
       splashScreen.theme = "SimpleTuxSplash-Plasma6";
     };
@@ -111,7 +112,7 @@ in {
 
     shortcuts = lib.mkMerge [
       {"kitty.desktop" = {"_launch" = "Alt+Return";};}
-      {"org.kde.dolphin.desktop" = {"_launch" = "Alt+E";};}
+      {"org.gnome.Nautilus.desktop" = {"_launch" = "Alt+E";};}
       {"brave-browser.desktop" = {"_launch" = "Alt+R";};}
       {
         kwin = {

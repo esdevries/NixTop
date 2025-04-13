@@ -15,11 +15,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
   };
 
@@ -27,7 +22,6 @@
     nixpkgs,
     home-manager,
     plasma-manager,
-    nvf,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -43,12 +37,12 @@
           inherit inputs;
           inherit profile;
         };
-        modules = commonModules ++ [./nixos/${name}.nix];
+        modules = commonModules ++ [./nixos/static/${name}.nix];
       };
   in {
     nixosConfigurations = {
       desktop = mkConfig "desktop";
-      redmibook = mkConfig "redmibook";
+      laptop = mkConfig "laptop";
     };
 
     homeConfigurations.${profile.username} = home-manager.lib.homeManagerConfiguration {
@@ -56,7 +50,6 @@
       modules = [
         ./home-manager/home.nix
         plasma-manager.homeManagerModules.plasma-manager
-        nvf.homeManagerModules.default
       ];
       extraSpecialArgs = {inherit profile;};
     };
