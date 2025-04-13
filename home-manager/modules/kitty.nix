@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.kitty = {
     enable = true;
-    themeFile = "GitHub_Dark_Colorblind";
+    themeFile = "Campbell";
     font = {
       name = "Hack";
       package = pkgs.nerd-fonts.hack;

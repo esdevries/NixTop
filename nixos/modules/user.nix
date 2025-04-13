@@ -5,7 +5,7 @@
       ignoreShellProgramCheck = true;
       isNormalUser = true;
       description = profile.fullname;
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
       packages = with pkgs; [ ];
     };
   };
