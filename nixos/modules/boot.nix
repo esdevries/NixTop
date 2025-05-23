@@ -12,9 +12,15 @@
       efiSupport = true;
       useOSProber = true;
       device = "nodev";
-      theme = inputs.nixos-grub-themes.packages.${pkgs.system}.hyperfluent;
-      extraConfig = "set timeout=-1";
+      
+      darkmatter-theme = {
+        enable = true;
+        style = "nixos";
+        icon = "color";
+        resolution = "1080p";
+      };
 
+      extraConfig = "set timeout=-1";
       extraEntries = ''
         menuentry "UEFI Firmware Settings" {
           fwsetup

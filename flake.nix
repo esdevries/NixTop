@@ -15,18 +15,25 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
+    darkmatter-grub-theme = {
+      url = gitlab:VandalByte/darkmatter-grub-theme;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     plasma-manager,
+    darkmatter-grub-theme,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     pkgsStable = import nixpkgs {config.allowUnfree = true;};
-    commonModules = [./nixos/configuration.nix];
+    commonModules = [
+      ./nixos/configuration.nix
+      darkmatter-grub-theme.nixosModule
+      ];
     profile = import ./profile.nix;
 
     mkConfig = name:
@@ -42,7 +49,6 @@
   in {
     nixosConfigurations = {
       desktop = mkConfig "desktop";
-      laptop = mkConfig "laptop";
     };
 
     homeConfigurations.${profile.username} = home-manager.lib.homeManagerConfiguration {
