@@ -20,24 +20,21 @@
     # Programs
     arduino-ide
     brave
-    evince
-    file-roller
     firefox
-    gedit
-    gnome-calculator
-    gnome-terminal
     mangohud
-    nautilus
     steam
     vlc
     vscode
 
     # Misc
-    kdePackages.qtmultimedia
-    kdePackages.sddm-kcm
+    dconf2nix
+    dconf-editor
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.clipboard-indicator
+    gnomeExtensions.dash-to-panel
+    gnome-tweaks
     libGL
     mesa
-    sddm-astronaut
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers

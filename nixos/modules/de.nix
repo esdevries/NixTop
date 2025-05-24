@@ -1,23 +1,21 @@
 { inputs, pkgs, ... }:
 {
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-astronaut-theme";
-  };
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
-  services.desktopManager.plasma6.enable = true;
-
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    ark
-    dolphin
-    dolphin-plugins
-    elisa
-    kate
-    khelpcenter
-    konsole
-    okular
+  environment.gnome.excludePackages = with pkgs; [
+    orca
+    geary
+    sushi
+    gnome-tour
+    gnome-user-docs
+    baobab
+    epiphany
+    gnome-contacts
+    gnome-maps
+    gnome-connections
+    simple-scan
+    yelp
   ];
-
-  services.gvfs.enable = true;
 }

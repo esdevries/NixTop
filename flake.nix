@@ -9,12 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     darkmatter-grub-theme = {
       url = gitlab:VandalByte/darkmatter-grub-theme;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +18,6 @@
   outputs = {
     nixpkgs,
     home-manager,
-    plasma-manager,
     darkmatter-grub-theme,
     ...
   } @ inputs: let
@@ -55,7 +48,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home-manager/home.nix
-        plasma-manager.homeManagerModules.plasma-manager
       ];
       extraSpecialArgs = {inherit profile;};
     };

@@ -8,7 +8,6 @@
     ./updategc.nix
     ./network.nix
     ./sound.nix
-    ./steam.nix
     ./user.nix
   ];
 }
