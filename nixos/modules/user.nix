@@ -1,12 +1,17 @@
-{ pkgs, profile, ... }: {
+{ pkgs, profile, ... }:
+{
   users = {
-    users.${profile.username} = {
+    users.${profile.userName} = {
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;
       isNormalUser = true;
-      description = profile.fullname;
-      extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
-      packages = with pkgs; [ ];
+      description = profile.fullName;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+        "dialout"
+      ];
     };
   };
 }

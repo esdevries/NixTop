@@ -1,6 +1,6 @@
 <div align="center">
 
-# NixTop System Configuration
+# Outflaked System Configuration
 
 ### This repository contains my personal NixOS system configuration, designed exactly as I see fit.
 
@@ -12,33 +12,33 @@
 
 ## Usage
 
-### Getting NixTop
+### Getting Outflaked
 
 Install NixOS like you normally would, and clone the repo.
 
 ```bash
 # Assuming this is the first time booting NixOS after installation and you don't have git.
 nix-shell -p git
-git clone https://github.com/esdevries/NixTop.git && cd NixTop
+git clone https://github.com/esdevries/Outflaked.git && cd Outflaked
 ```
 
 ### Edit personal details
 
-Next, make sure to update the `profile.nix` file with your own personal details.
+Next, make sure to update the `flake.nix` file with your own personal details.
 
 ```nix
-# Example of what might be in profile.nix
-{
-  username = "YOUR_USERNAME";
-  fullname = "YOUR_FULL_NAME";
-  gitemail = "YOUR_GIT_EMAIL";
-}
+# Example of what might be in flake.nix
+profile = {
+  userName = "YOUR_USERNAME";
+  fullName = "YOUR_FULL_NAME";
+  gitEmail = "YOUR_GIT_EMAIL";
+};
 ```
 
 ### Copy hardware configuration.nix
 
 ```bash
-cp /etc/nixos/hardware-configuration.nix ./nixos/static/desktop.nix
+cp /etc/nixos/hardware-configuration.nix ./nixos/hardware/desktop.nix
 ```
 
 ### Install

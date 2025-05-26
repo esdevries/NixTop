@@ -8,18 +8,21 @@
     alsa.support32Bit = true;
     pulse.enable = true;
 
-    extraConfig.pipewire = {
-      "99-loopback" = {
-        "context.modules" = [
-          {
-            "name" = "libpipewire-module-loopback";
-            "args" = {
-              "latency.msec" = 10;
-              "adjust.time" = 5;
-            };
-          }
-        ];
+    /*
+      Xbox/Ps5 monitor audio
+      extraConfig.pipewire = {
+        "99-loopback" = {
+          "context.modules" = [
+            {
+              "name" = "libpipewire-module-loopback";
+              "args" = {
+                "latency.msec" = 10;
+                "adjust.time" = 5;
+              };
+            }
+          ];
+        };
       };
-    };
+    */
   };
 }
