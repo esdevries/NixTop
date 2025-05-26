@@ -1,6 +1,6 @@
-{lib, ...}: {
+{
   networking = {
-    hostName = "nixtop";
+    hostName = "outflaked";
 
     networkmanager = {
       enable = true;

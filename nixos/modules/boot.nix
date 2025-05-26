@@ -1,8 +1,5 @@
+{ pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   boot.loader = {
     systemd-boot.enable = false;
     efi.canTouchEfiVariables = true;
@@ -12,12 +9,12 @@
       efiSupport = true;
       useOSProber = true;
       device = "nodev";
-      
+
       darkmatter-theme = {
         enable = true;
         style = "nixos";
         icon = "color";
-        resolution = "1080p";
+        resolution = "1440p";
       };
 
       extraConfig = "set timeout=-1";
@@ -36,4 +33,5 @@
       '';
     };
   };
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }

@@ -4,11 +4,10 @@
     ./boot.nix
     ./de.nix
     ./docker.nix
-    ./locale.nix
+    ./localization.nix
     ./updategc.nix
     ./network.nix
     ./sound.nix
-    ./steam.nix
     ./user.nix
   ];
 }

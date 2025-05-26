@@ -1,8 +1,5 @@
-{
-  lib,
-  profile,
-  ...
-}: let
+{ lib, profile, ... }:
+let
   commonWidgets = [
     "org.kde.plasma.kickoff"
     "org.kde.plasma.pager"
@@ -34,7 +31,8 @@
     whenSleepingEnter = "standbyThenHibernate";
     whenLaptopLidClosed = "sleep";
   };
-in {
+in
+{
   programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -46,12 +44,12 @@ in {
       theme = "Materia";
       windowDecorations.library = "org.kde.breeze";
       windowDecorations.theme = "Breeze";
-      wallpaper = "/home/${profile.username}/.wallpaper";
+      wallpaper = "/home/${profile.userName}/.wallpaper";
       splashScreen.theme = "SimpleTuxSplash-Plasma6";
     };
 
     kscreenlocker = {
-      appearance.wallpaper = "/home/${profile.username}/.wallpaper";
+      appearance.wallpaper = "/home/${profile.userName}/.wallpaper";
       lockOnResume = true;
       autoLock = false;
       passwordRequired = true;
@@ -110,10 +108,33 @@ in {
       ];
     };
 
+    input.touchpads = [
+      {
+        enable = true;
+        name = "ELAN2310:00 04F3:3238 Touchpad";
+        naturalScroll = true;
+        productId = "3238";
+        tapToClick = true;
+        vendorId = "04f3";
+      }
+    ];
+
     shortcuts = lib.mkMerge [
-      {"kitty.desktop" = {"_launch" = "Alt+Return";};}
-      {"org.gnome.Nautilus.desktop" = {"_launch" = "Alt+E";};}
-      {"brave-browser.desktop" = {"_launch" = "Alt+R";};}
+      {
+        "kitty.desktop" = {
+          "_launch" = "Alt+Return";
+        };
+      }
+      {
+        "org.kde.dolphin.desktop" = {
+          "_launch" = "Alt+E";
+        };
+      }
+      {
+        "brave-browser.desktop" = {
+          "_launch" = "Alt+R";
+        };
+      }
       {
         kwin = {
           "Window Close" = "Alt+Q";
